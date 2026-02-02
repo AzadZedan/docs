@@ -134,13 +134,17 @@ By default, Railway maintains only one deploy per service.
 
 In practice, this means that if you trigger a new deploy either [manually](/guides/deployment-actions#redeploy) or [automatically](/guides/github-autodeploys), the old version will be stopped and removed with a slight overlap for zero downtime.
 
-Once the new deployment is online, the old deployment is sent a SIGTERM signal and given 3 seconds to gracefully shutdown before being forcefully stopped with a SIGKILL. We do not send any other signals under any circumstances.
+Once the new deployment is online, the old deployment is sent a SIGTERM signal. By default, it is given 0 seconds to gracefully shutdown before being forcefully stopped with a SIGKILL. We do not send any other signals under any circumstances.
 
 The time given to gracefully shutdown can be controlled by setting a [`RAILWAY_DEPLOYMENT_DRAINING_SECONDS`](/reference/variables#user-provided-configuration-variables) [service variable](/overview/the-basics#service-variables).
 
 ## Railway Initiated Deployments
 
-Occasionally, Railway will initiate a new deployment to migrate your service from one host to another. **This is primarily for your service's security and performance.**
+Occasionally, Railway will initiate a new deployment to migrate your service from one host to another. This may happen for one of three reasons:
+
+1. At your plan tier, such as Trial or Hobby, you may be pre-emptively moved to a different host to help us optimize workload distribution.
+2. A host requires security or performance updates and requires there to be no running workloads on the machine. We provide advance warning for these events.
+3. A host has a fault and we migrate workloads off the machine to another to maintain customer service continutity.
 
 We perform these migrations when implementing security patches or platform upgrades to the underlying infrastructure where your service was previously running. During platform-wide upgrades, your service might be redeployed multiple times as we roll out changes across our infrastructure. These deployments are mandatory and cannot be opted out of.
 

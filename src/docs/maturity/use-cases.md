@@ -27,7 +27,7 @@ Railway's been in operation for now for more than three years and we have served
 
 All of these verticals deploy workloads that may require high bandwidth operations or intensive compute.
 
-However, service scale on the platform is not unbounded. As a foundational infrastructure company, we understand that customers may outpace our pace of improvement for the platform. Even though 32 vCPU and 32 GB of memory sounds like a lot (with up to 20 replicas) on the Pro plan, when faced with hyper-growth: throwing more resources at the issue might be your best bet until long term optimizations can be made by your team.
+However, service scale on the platform is not unbounded. As a foundational infrastructure company, we understand that customers may outpace our pace of improvement for the platform. Even though 24 vCPU and 24 GB of memory sounds like a lot (with up to 42 replicas) on the Pro plan, when faced with hyper-growth: throwing more resources at the issue might be your best bet until long term optimizations can be made by your team.
 
 Railway will gladly bump up your service limits within your tier of service to meet your needs. Even so, we will be frank and honest if you may need to seek elsewhere to augment your workloads with extra compute. If your compute needs outpace our Pro offering, consider our Enterprise plans where we offer even greater limits and capacity planning, [email us to learn more](mailto:team@railway.com), or [click here](https://cal.com/team/railway/work-with-railway?duration=30) to schedule some time to chat.
 
@@ -42,8 +42,6 @@ We advise developers to:
 - [Configure backups](/reference/backups)
 - Run-book and restore their backups
 - Configure secondaries to connect to in-case of a disaster situation
-
-Included in our planned near-term work for databases on Railway are additional database metrics, and SSH access into the running database.
 
 As mentioned before: we don't believe in vendor lock-in here at Railway, if your needs outpace us, consider other vendors like PlanetScale (for MySQL) or Cockroach (for Postgres).
 
@@ -60,8 +58,6 @@ We also overlay commit and deployment behavior to correlate issues with applicat
 
 For service logs, we store logs for up to 90 days for Pro plan workspaces.
 
-Included in our planned near-term work for logging and observability on Railway are improvements to structured logging, and OpenTelemetry compatible endpoints.
-
 It is common for teams who wish to have additional observability to use an additional monitoring tool that maintains a longer time horizon of data such as New Relic, Sentry, or Datadog. Within projects, deploying a Datadog Agent is as easy as deploying the template and providing your Datadog API Keys.
 
 ### Networking
@@ -71,8 +67,6 @@ Railway doesn't have a hard bandwidth limit to the broader internet.
 We may throttle your outbound bandwidth and reach out to you when it exceeds 100GB/month to ensure the legitimacy of your workloads. If you need to control where your traffic is allowed to come from such as setting up firewall rules, we recommend setting up Cloudflare or an external load balancer/L7 application firewall to handle it.
 
 Private networking bandwidth is un-metered.
-
-We intend to provide advanced traffic-shaping controls within Railway in the future.
 
 ### Service Level Objectives
 
